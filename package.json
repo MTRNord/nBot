@@ -4,7 +4,7 @@
   "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
   "main": "start.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --reporter tests"
   },
   "repository": {
     "type": "git",
@@ -24,5 +24,10 @@
   "bugs": {
     "url": "https://github.com/MTRNord/nBot/issues"
   },
-  "homepage": "https://github.com/MTRNord/nBot#readme"
+  "homepage": "https://github.com/MTRNord/nBot#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "srcds-rcon": "^2.2.0"
+  }
 }
