@@ -5,3 +5,7 @@ dependencies:
   override:
     - npm install
     - npm install --dev
+general:
+  artifacts:
+    - "coverage" # relative to the user's home directory
+    - $CIRCLE_TEST_REPORTS
