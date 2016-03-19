@@ -21,9 +21,22 @@ module.exports = {
   },
   iojs: function () {
     io.on('connection', function (socket) {
-      socket.emit('news', { hello: 'world' });
-      socket.on('my other event', function (data) {
-        console.log(data);
+      //senden an socket dass er verbunden ist
+      //socket.emit('userOnline', {message: 'verbunden'});
+
+      //Informationen vom User holen
+      socket.on('command', function (command) {
+        console.log(command.command);
+        if (command.command == "restartgame") {
+          rcon.restart_game()
+        }else {
+          if (command.command == "live_on") {
+            rcon.live_on()
+          }else {
+            console.log("unknown command");
+          }
+        }
+        socket.broadcast.emit('alert', "command executed");
       });
     });
   }
