@@ -12,6 +12,11 @@
         {
           "name": "MTRNord"
         }
+      ],
+      "plugins": [
+        {
+          "name": "PLUGIN_NAME"
+        }
       ]
     }
   ],
@@ -24,6 +29,13 @@
     {
       "name": "MTRNord",
       "Steam_ID": "STEAMID"
+    }
+  ],
+  "aviable_plugins": [
+    {
+      "name": "PLUGIN_NAME",
+      "version": "x.x.x",
+      "path": ""
     }
   ]
 }
