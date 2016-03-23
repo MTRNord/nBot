@@ -3,6 +3,7 @@ var express = require('express')
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var rcon = require("../backend/rcon.js")
+var util = require('util');
 
 module.exports = {
   start: function () {
@@ -33,7 +34,13 @@ module.exports = {
           if (command.command == "live_on") {
             rcon.live_on()
           }else {
-            console.log("unknown command");
+            if (command.command == "status") {
+              rcon.status()
+
+              console.log("Status: " + util.inspect(rcon.status(), {showHidden: false, depth: null}));
+            }else {
+              console.log("unknown command");
+            }
           }
         }
         socket.broadcast.emit('alert', "command executed");

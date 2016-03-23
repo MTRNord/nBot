@@ -63,8 +63,16 @@
         </div>
         <div class="panel-body">
           <p>
-            <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
-            <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
+            <ul class="list-group">
+              <li class="list-group-item">
+                <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
+                <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
+              </li>
+              <li class="list-group-item">
+                <p id="status"></p>
+                <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
+              </li>
+            </ul>
           </p>
         </div>
 
@@ -310,6 +318,15 @@
       });
       socket.on('alert', function (message) {
         console.log(message);
+      });
+      socket.on('status_alert', function (message) {
+        console.log("response " + message);
+      });
+      $(document).off('click', '#check_status').on('click', '#check_status', function (e) {
+        console.log('Check Status');
+
+        socket.emit('command', {command: 'status'});
+        e.preventDefault();
       });
     </script>
   </body>

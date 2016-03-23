@@ -21,8 +21,20 @@ module.exports = {
   },
   restart_game: function () {
     rcon.connect().then(() => {
-        return rcon.command('mp_restartgame 1').then(() => {
+        return rcon.command('mp_restartgame 1').then(() =>{
             console.log('game restarted');
+        });
+    }).then(
+        () => rcon.disconnect()
+    ).catch(err => {
+        console.log('caught', err);
+        console.log(err.stack);
+    });
+  },
+  status: function () {
+    rcon.connect().then(() => {
+        rcon.command('status').then(() => {
+            console.log('status check');
         });
     }).then(
         () => rcon.disconnect()
