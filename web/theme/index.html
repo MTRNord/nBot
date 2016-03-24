@@ -72,6 +72,9 @@
                 <p id="status"></p>
                 <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
               </li>
+              <li class="list-group-item">
+                <button type="button" class="btn btn-info btn-lg" id="add_server">Add Server</button>
+              </li>
             </ul>
           </p>
         </div>
@@ -326,6 +329,12 @@
         console.log('Check Status');
 
         socket.emit('command', {command: 'status'});
+        e.preventDefault();
+      });
+      $(document).off('click', '#add_server').on('click', '#add_server', function (e) {
+        console.log('Add Server');
+
+        socket.emit('command', {command: 'add_server'});
         e.preventDefault();
       });
     </script>

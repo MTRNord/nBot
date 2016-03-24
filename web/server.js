@@ -3,6 +3,7 @@ var express = require('express')
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var rcon = require("../backend/rcon.js")
+var addserver = require("../backend/addServer.js")
 var util = require('util');
 
 module.exports = {
@@ -39,7 +40,11 @@ module.exports = {
 
               console.log("Status: " + util.inspect(rcon.status(), {showHidden: false, depth: null}));
             }else {
-              console.log("unknown command");
+              if (command.command == "add_server") {
+                addserver.start()
+              }else {
+                console.log("unknown command");
+              }
             }
           }
         }
