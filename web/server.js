@@ -17,8 +17,8 @@ module.exports = {
     app.use('/css', express.static(__dirname + '/theme/css'));
     app.use('/js', express.static(__dirname + '/theme/js'));
     app.use('/fonts', express.static(__dirname + '/theme/fonts'));
-    http.listen(3000, function(){
-      console.log('listening on *:3000');
+    http.listen(3001, "0.0.0.0", function(){
+      console.log('listening on *:3001');
     });
   },
   iojs: function () {
@@ -36,9 +36,9 @@ module.exports = {
             rcon.live_on()
           }else {
             if (command.command == "status") {
-              rcon.status()
-
-              console.log("Status: " + util.inspect(rcon.status(), {showHidden: false, depth: null}));
+              console.log(typeof rcon.status());
+              socket.emit('status_alert', {response: rcon.status()});
+              console.log(rcon.status());
             }else {
               if (command.command == "add_server") {
                 addserver.start()
@@ -48,7 +48,7 @@ module.exports = {
             }
           }
         }
-        socket.broadcast.emit('alert', "command executed");
+        socket.emit('alert', {response: "command executed"});
       });
     });
   }

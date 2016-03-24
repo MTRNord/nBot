@@ -16,7 +16,8 @@
     <!-- Bootstrap theme -->
     <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
     <!-- Custom styles for this template -->
-    <link href="theme.css" rel="stylesheet">
+    <link href="css/theme.css" rel="stylesheet">
+    <link href="css/sidebar.css" rel="stylesheet">
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="//getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
@@ -28,92 +29,131 @@
   </head>
 
   <body>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bootstrap theme</a>
+    <div id="wrapper" class="toggled">
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Bootstrap theme</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      </nav>
+      <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
       <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <div class="container">
-          <h1>nBot</h1>
-          <p>This is a eBot like CSGO Webadministration called nBot.</p>
+        <div id="page-content-wrapper">
+          <div class="container">
+            <button type="button" class="btn btn-default" aria-label="Toggle Menu" href="#menu-toggle"  id="menu-toggle">
+              <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> MENU
+            </button>
+            <h1>nBot</h1>
+            <p>This is a eBot like CSGO Webadministration called nBot.</p>
 
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Server 1</h3>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">Server 1</h3>
+              </div>
+              <div class="panel-body">
+                <div class="panel panel-default">
+                  <div class="panel-heading">Server Data</div>
+                  <div class="panel-body">
+                    <p><b>Hostname: </b>Placeholder</p>
+                    <p><b>IP: </b>Placeholder</p>
+                    <p><b>Password: </b>Placeholder</p>
+                    <p><b>Owner: </b>Placeholder</p>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">Game Options</div>
+                  <div class="panel-body">
+                    <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
+                    <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">Game Infos</div>
+                  <div class="panel-body">
+                    <p id="status"></p>
+                    <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="panel-body">
-              <div class="panel panel-default">
-                <div class="panel-heading">Server Data</div>
-                <div class="panel-body">
-                  <p><b>Hostname: </b>Placeholder</p>
-                  <p><b>IP: </b>Placeholder</p>
-                  <p><b>Password: </b>Placeholder</p>
-                  <p><b>Owner: </b>Placeholder</p>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Game Options</div>
-                <div class="panel-body">
-                  <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
-                  <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">Game Infos</div>
-                <div class="panel-body">
-                  <p id="status"></p>
-                  <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
-                </div>
-              </div>
-            </div>
+            <button type="button" class="btn btn-info btn-lg" id="add_server">Add Server</button>
           </div>
-          <button type="button" class="btn btn-info btn-lg" id="add_server">Add Server</button>
         </div>
       </div>
       <div class="container">
-            <!-- Example row of columns -->
-            <div class="row">
-              <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-              </div>
-              <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-             </div>
-              <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-              </div>
-            </div>
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </div>
+          <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+          </div>
+        </div>
 
-            <hr>
+        <hr>
 
-            <footer>
-              <p>&copy; 2016 MTRNord &amp; Theme: &copy; 2015 Bootstrap</p>
-            </footer>
-          </div> <!-- /container -->
+        <footer>
+          <p>&copy; 2016 MTRNord &amp; Theme: &copy; 2015 Bootstrap</p>
+        </footer>
+      </div> <!-- /container -->
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
@@ -121,6 +161,10 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
       var socket = io('ws://localhost:3000');
       $(document).off('click', '#restart').on('click', '#restart', function (e) {
         console.log('restart fired');
@@ -135,10 +179,11 @@
         e.preventDefault();
       });
       socket.on('alert', function (message) {
-        console.log(message);
+        console.log(message.response);
       });
       socket.on('status_alert', function (message) {
-        console.log("response " + message);
+        console.warn(typeof message)
+        console.warn(message)
       });
       $(document).off('click', '#check_status').on('click', '#check_status', function (e) {
         console.log('Check Status');

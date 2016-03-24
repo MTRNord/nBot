@@ -32,9 +32,9 @@ module.exports = {
     });
   },
   status: function () {
-    rcon.connect().then(() => {
-        rcon.command('status').then(() => {
-            console.log('status check');
+    return rcon.connect().then(() => {
+        return rcon.command('status').then(result => {
+            return result
         });
     }).then(
         () => rcon.disconnect()
