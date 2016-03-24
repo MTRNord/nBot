@@ -165,7 +165,8 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
       });
-      var socket = io('ws://localhost:3000');
+      var ws = 'ws://'+location.hostname+(location.port ? ':'+location.port: '');
+      var socket = io(ws);
       $(document).off('click', '#restart').on('click', '#restart', function (e) {
         console.log('restart fired');
 
