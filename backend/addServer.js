@@ -1,10 +1,24 @@
+/**
+* Build and setup csgoserver
+*
+* @module nBot
+* @submodule addServer
+* @requires server, progress, https, fs
+*/
 var socket = require("../web/server.js")
 var ProgressBar = require('progress');
 var https = require('https');
 var fs = require('fs');
-
-module.exports = {
-  start: function () {
+/**
+* @class addServer
+* @static
+*/
+var addServer = module.exports = {}
+  /**
+  * @method start
+  * @beta Work in Progress
+  */
+  addServer.start: function () {
     var req = https.request({
       host: 'raw.githubusercontent.com',
       port: 443,
@@ -43,7 +57,9 @@ module.exports = {
       console.error(e);
     });
   },
-  step2: function () {
+  /**
+  * @method step2
+  */
+  addServer.step2: function () {
     //TODO Start Script
   }
-}

@@ -1,0 +1,11 @@
+{
+    "name": "nBot",
+    "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
+    "version": "0.0.1",
+    "url": "https://github.com/MTRNord/nBot",
+    "options": {
+        "outdir": "./apidocs",
+        "themedir" : "./node_modules/yuidoc-bootstrap-theme",
+        "helpers" : ["./node_modules/yuidoc-bootstrap-theme/helpers/helpers.js"]
+    }
+}

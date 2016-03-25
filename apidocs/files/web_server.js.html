@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>web\server.js - nBot</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="nBot" src="../assets/css/logo.png" style="max-height: 65%;" title="nBot">
+            nBot
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/addServer", "classes/rcon_func", "classes/server", "modules/addServer", "modules/nBot", "modules/rcon", "modules/server"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                            <li><a href="../classes/addServer.html">addServer</a></li>
+	                            <li><a href="../classes/rcon_func.html">rcon_func</a></li>
+	                            <li><a href="../classes/server.html">server</a></li>
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                            <li><a href="../modules/addServer.html">addServer</a></li>
+	                            <li><a href="../modules/nBot.html">nBot</a></li>
+	                            <li><a href="../modules/rcon.html">rcon</a></li>
+	                            <li><a href="../modules/server.html">server</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>web\server.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+* Webserver and Websocket-server
+*
+* @module nBot
+* @submodule server
+* @requires app, express, http, io, rcon, addserver, util
+*/
+var app = require(&#x27;express&#x27;)();
+var express = require(&#x27;express&#x27;)
+var http = require(&#x27;http&#x27;).Server(app);
+var io = require(&#x27;socket.io&#x27;)(http);
+var rcon = require(&quot;../backend/rcon.js&quot;)
+var addserver = require(&quot;../backend/addServer.js&quot;)
+var util = require(&#x27;util&#x27;);
+/**
+* @class server
+* @static
+*/
+var server =  module.exports = {};
+  /**
+  * @method start
+  */
+  server.start: function () {
+    app.get(&#x27;/&#x27;, function(req, res){
+      res.sendFile(__dirname + &#x27;/theme/index.html&#x27;);
+    });
+    app.get(&#x27;/theme.css&#x27;, function(req, res){
+      res.sendFile(__dirname + &#x27;/theme/theme.css&#x27;);
+    });
+    app.use(&#x27;/css&#x27;, express.static(__dirname + &#x27;/theme/css&#x27;));
+    app.use(&#x27;/js&#x27;, express.static(__dirname + &#x27;/theme/js&#x27;));
+    app.use(&#x27;/fonts&#x27;, express.static(__dirname + &#x27;/theme/fonts&#x27;));
+    http.listen(3001, &quot;0.0.0.0&quot;, function(){
+      console.log(&#x27;listening on *:3001&#x27;);
+    });
+  },
+  /**
+  * @method iojs
+  */
+  server.iojs: function () {
+    io.on(&#x27;connection&#x27;, function (socket) {
+      //senden an socket dass er verbunden ist
+      //socket.emit(&#x27;userOnline&#x27;, {message: &#x27;verbunden&#x27;});
+
+      //Informationen vom User holen
+      socket.on(&#x27;command&#x27;, function (command) {
+        console.log(command.command);
+        if (command.command == &quot;restartgame&quot;) {
+          rcon.restart_game()
+        }else {
+          if (command.command == &quot;live_on&quot;) {
+            rcon.live_on()
+          }else {
+            if (command.command == &quot;status&quot;) {
+              rcon.status().then(result =&gt; console.log(&#x27;Got status&#x27;, result))
+              //socket.emit(&#x27;status_alert&#x27;, {response: result})
+            }else {
+              if (command.command == &quot;add_server&quot;) {
+                addserver.start()
+              }else {
+                console.log(&quot;unknown command&quot;);
+              }
+            }
+          }
+        }
+        socket.emit(&#x27;alert&#x27;, {response: &quot;command executed&quot;, command: command.command});
+      });
+    });
+  }
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

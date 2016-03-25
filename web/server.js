@@ -1,3 +1,10 @@
+/**
+* Webserver and Websocket-server
+*
+* @module nBot
+* @submodule server
+* @requires app, express, http, io, rcon, addserver, util
+*/
 var app = require('express')();
 var express = require('express')
 var http = require('http').Server(app);
@@ -5,9 +12,15 @@ var io = require('socket.io')(http);
 var rcon = require("../backend/rcon.js")
 var addserver = require("../backend/addServer.js")
 var util = require('util');
-
-module.exports = {
-  start: function () {
+/**
+* @class server
+* @static
+*/
+var server =  module.exports = {};
+  /**
+  * @method start
+  */
+  server.start: function () {
     app.get('/', function(req, res){
       res.sendFile(__dirname + '/theme/index.html');
     });
@@ -21,7 +34,10 @@ module.exports = {
       console.log('listening on *:3001');
     });
   },
-  iojs: function () {
+  /**
+  * @method iojs
+  */
+  server.iojs: function () {
     io.on('connection', function (socket) {
       //senden an socket dass er verbunden ist
       //socket.emit('userOnline', {message: 'verbunden'});
@@ -36,9 +52,8 @@ module.exports = {
             rcon.live_on()
           }else {
             if (command.command == "status") {
-              console.log(typeof rcon.status());
-              socket.emit('status_alert', {response: rcon.status()});
-              console.log(rcon.status());
+              rcon.status().then(result => console.log('Got status', result))
+              //socket.emit('status_alert', {response: result})
             }else {
               if (command.command == "add_server") {
                 addserver.start()
@@ -48,8 +63,7 @@ module.exports = {
             }
           }
         }
-        socket.emit('alert', {response: "command executed"});
+        socket.emit('alert', {response: "command executed", command: command.command});
       });
     });
   }
-};

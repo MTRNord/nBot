@@ -1,9 +1,23 @@
+/**
+* Rcon connection to csgo Server
+*
+* @module nBot
+* @submodule rcon
+* @requires srcds-rcon
+*/
 var rcon = require('srcds-rcon')({
     address: '127.0.0.1',
     password: '1199'
 });
-module.exports = {
-  start: function () {
+/**
+* @class rcon_func
+* @static
+*/
+var rcon_func = module.exports = {}
+  /**
+  * @method start
+  */
+  rcon_func.start: function () {
     rcon.connect().then(() => {
         return rcon.command('changelevel de_dust2').then(() => {
             console.log('changed map');
@@ -19,7 +33,10 @@ module.exports = {
         console.log(err.stack);
     });
   },
-  restart_game: function () {
+  /**
+  * @method restart_game
+  */
+  rcon_func.restart_game: function () {
     rcon.connect().then(() => {
         return rcon.command('mp_restartgame 1').then(() =>{
             console.log('game restarted');
@@ -31,11 +48,13 @@ module.exports = {
         console.log(err.stack);
     });
   },
-  status: function () {
+  /**
+  * @method status
+  * @return {String} Status from the Server.
+  */
+  rcon_func.status: function () {
     return rcon.connect().then(() => {
-        return rcon.command('status').then(result => {
-            return result
-        });
+        return rcon.command('status')
     }).then(
         () => rcon.disconnect()
     ).catch(err => {
@@ -43,7 +62,10 @@ module.exports = {
         console.log(err.stack);
     });
   },
-  live_on: function () {
+  /**
+  * @method live_on
+  */
+  rcon_func.live_on: function () {
     rcon.connect().then(() => {
         return rcon.command('mp_restartgame 1').then(() => {
             console.log('game restarted 0');
@@ -81,4 +103,3 @@ module.exports = {
         console.log(err.stack);
     });
   }
-};

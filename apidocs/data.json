@@ -1,0 +1,269 @@
+{
+    "project": {
+        "name": "nBot",
+        "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
+        "version": "0.0.1",
+        "url": "https://github.com/MTRNord/nBot"
+    },
+    "files": {
+        "backend\\addServer.js": {
+            "name": "backend\\addServer.js",
+            "modules": {
+                "addServer": 1
+            },
+            "classes": {
+                "addServer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "backend\\rcon.js": {
+            "name": "backend\\rcon.js",
+            "modules": {
+                "rcon": 1
+            },
+            "classes": {
+                "rcon_func": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "web\\server.js": {
+            "name": "web\\server.js",
+            "modules": {
+                "server": 1
+            },
+            "classes": {
+                "server": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "start.js": {
+            "name": "start.js",
+            "modules": {
+                "nBot": 1
+            },
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "nBot": {
+            "name": "nBot",
+            "submodules": {
+                "addServer": 1,
+                "rcon": 1,
+                "server": 1
+            },
+            "elements": {},
+            "classes": {
+                "addServer": 1,
+                "rcon_func": 1,
+                "server": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "main",
+            "file": "web\\server.js",
+            "line": 15,
+            "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
+            "itemtype": "main"
+        },
+        "addServer": {
+            "name": "addServer",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "addServer": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "nBot",
+            "namespace": "",
+            "file": "backend\\addServer.js",
+            "line": 12,
+            "description": "Build and setup csgoserver",
+            "requires": [
+                "server",
+                "progress",
+                "https",
+                "fs"
+            ]
+        },
+        "rcon": {
+            "name": "rcon",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "rcon_func": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "nBot",
+            "namespace": "",
+            "file": "backend\\rcon.js",
+            "line": 12,
+            "description": "Rcon connection to csgo Server",
+            "requires": [
+                "srcds-rcon"
+            ]
+        },
+        "server": {
+            "name": "server",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "server": 1
+            },
+            "fors": {},
+            "is_submodule": 1,
+            "namespaces": {},
+            "module": "nBot",
+            "namespace": "",
+            "file": "web\\server.js",
+            "line": 15,
+            "description": "Webserver and Websocket-server",
+            "requires": [
+                "app",
+                "express",
+                "http",
+                "io",
+                "rcon",
+                "addserver",
+                "util"
+            ]
+        }
+    },
+    "classes": {
+        "addServer": {
+            "name": "addServer",
+            "shortname": "addServer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "nBot",
+            "submodule": "addServer",
+            "namespace": "",
+            "file": "backend\\addServer.js",
+            "line": 12,
+            "static": 1
+        },
+        "rcon_func": {
+            "name": "rcon_func",
+            "shortname": "rcon_func",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "nBot",
+            "submodule": "rcon",
+            "namespace": "",
+            "file": "backend\\rcon.js",
+            "line": 12,
+            "static": 1
+        },
+        "server": {
+            "name": "server",
+            "shortname": "server",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "nBot",
+            "submodule": "server",
+            "namespace": "",
+            "file": "web\\server.js",
+            "line": 15,
+            "static": 1
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "backend\\addServer.js",
+            "line": 17,
+            "itemtype": "method",
+            "name": "start",
+            "beta": "Work in Progress",
+            "class": "addServer",
+            "module": "nBot",
+            "submodule": "addServer"
+        },
+        {
+            "file": "backend\\addServer.js",
+            "line": 60,
+            "itemtype": "method",
+            "name": "step2",
+            "class": "addServer",
+            "module": "nBot",
+            "submodule": "addServer"
+        },
+        {
+            "file": "backend\\rcon.js",
+            "line": 17,
+            "itemtype": "method",
+            "name": "start",
+            "class": "rcon_func",
+            "module": "nBot",
+            "submodule": "rcon"
+        },
+        {
+            "file": "backend\\rcon.js",
+            "line": 36,
+            "itemtype": "method",
+            "name": "restart_game",
+            "class": "rcon_func",
+            "module": "nBot",
+            "submodule": "rcon"
+        },
+        {
+            "file": "backend\\rcon.js",
+            "line": 51,
+            "itemtype": "method",
+            "name": "status",
+            "return": {
+                "description": "Status from the Server.",
+                "type": "String"
+            },
+            "class": "rcon_func",
+            "module": "nBot",
+            "submodule": "rcon"
+        },
+        {
+            "file": "backend\\rcon.js",
+            "line": 65,
+            "itemtype": "method",
+            "name": "live_on",
+            "class": "rcon_func",
+            "module": "nBot",
+            "submodule": "rcon"
+        },
+        {
+            "file": "web\\server.js",
+            "line": 20,
+            "itemtype": "method",
+            "name": "start",
+            "class": "server",
+            "module": "nBot",
+            "submodule": "server"
+        },
+        {
+            "file": "web\\server.js",
+            "line": 37,
+            "itemtype": "method",
+            "name": "iojs",
+            "class": "server",
+            "module": "nBot",
+            "submodule": "server"
+        }
+    ],
+    "warnings": []
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>backend\rcon.js - nBot</title>
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="nBot" src="../assets/css/logo.png" style="max-height: 65%;" title="nBot">
+            nBot
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.0.1</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/addServer", "classes/rcon_func", "classes/server", "modules/addServer", "modules/nBot", "modules/rcon", "modules/server"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                            <li><a href="../classes/addServer.html">addServer</a></li>
+	                            <li><a href="../classes/rcon_func.html">rcon_func</a></li>
+	                            <li><a href="../classes/server.html">server</a></li>
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                            <li><a href="../modules/addServer.html">addServer</a></li>
+	                            <li><a href="../modules/nBot.html">nBot</a></li>
+	                            <li><a href="../modules/rcon.html">rcon</a></li>
+	                            <li><a href="../modules/server.html">server</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>backend\rcon.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+* Rcon connection to csgo Server
+*
+* @module nBot
+* @submodule rcon
+* @requires srcds-rcon
+*/
+var rcon = require(&#x27;srcds-rcon&#x27;)({
+    address: &#x27;127.0.0.1&#x27;,
+    password: &#x27;1199&#x27;
+});
+/**
+* @class rcon_func
+* @static
+*/
+var rcon_func = module.exports = {}
+  /**
+  * @method start
+  */
+  rcon_func.start: function () {
+    rcon.connect().then(() =&gt; {
+        return rcon.command(&#x27;changelevel de_dust2&#x27;).then(() =&gt; {
+            console.log(&#x27;changed map&#x27;);
+        });
+    }).then(
+        () =&gt; rcon.command(&#x27;sv_lan 0&#x27;).then(() =&gt; console.log(&#x27;changed sv_lan&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;restarted game&#x27;))
+    ).then(
+        () =&gt; rcon.disconnect()
+    ).catch(err =&gt; {
+        console.log(&#x27;caught&#x27;, err);
+        console.log(err.stack);
+    });
+  },
+  /**
+  * @method restart_game
+  */
+  rcon_func.restart_game: function () {
+    rcon.connect().then(() =&gt; {
+        return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt;{
+            console.log(&#x27;game restarted&#x27;);
+        });
+    }).then(
+        () =&gt; rcon.disconnect()
+    ).catch(err =&gt; {
+        console.log(&#x27;caught&#x27;, err);
+        console.log(err.stack);
+    });
+  },
+  /**
+  * @method status
+  * @return {String} Status from the Server.
+  */
+  rcon_func.status: function () {
+    return rcon.connect().then(() =&gt; {
+        return rcon.command(&#x27;status&#x27;)
+    }).then(
+        () =&gt; rcon.disconnect()
+    ).catch(err =&gt; {
+        console.log(&#x27;caught&#x27;, err);
+        console.log(err.stack);
+    });
+  },
+  /**
+  * @method live_on
+  */
+  rcon_func.live_on: function () {
+    rcon.connect().then(() =&gt; {
+        return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; {
+            console.log(&#x27;game restarted 0&#x27;);
+        });
+    }).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 1&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 2&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 3&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 4&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 5&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 6&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 7&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 8&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 9&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 10&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+    ).then(
+        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+    ).then(
+        () =&gt; rcon.disconnect()
+    ).catch(err =&gt; {
+        console.log(&#x27;caught&#x27;, err);
+        console.log(err.stack);
+    });
+  }
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

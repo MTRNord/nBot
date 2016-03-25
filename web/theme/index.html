@@ -18,6 +18,7 @@
     <!-- Custom styles for this template -->
     <link href="css/theme.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/pnotify.custom.min.css" media="all" rel="stylesheet" type="text/css" />
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <link href="//getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
@@ -160,7 +161,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
     <script>
+      PNotify.prototype.options.styling = "bootstrap3";
       $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
@@ -174,13 +177,28 @@
         e.preventDefault();
       });
       $(document).off('click', '#live_on').on('click', '#live_on', function (e) {
-        console.log('LIVE!!!');
+        console.warn('LIVE!!!');
 
         socket.emit('command', {command: 'live_on'});
         e.preventDefault();
       });
       socket.on('alert', function (message) {
-        console.log(message.response);
+        if (message.command == "live_on") {
+          PNotify.desktop.permission();
+          (new PNotify({
+            title: 'LIVE!!!',
+            text: "The game successfully started!",
+            type: 'success',
+            desktop: {
+              desktop: true
+            }
+          })).get().click(function(e) {
+            if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) return;
+            alert('Hey! You clicked the desktop notification!');
+          });
+        }else {
+
+        }
       });
       socket.on('status_alert', function (message) {
         console.warn(typeof message)
