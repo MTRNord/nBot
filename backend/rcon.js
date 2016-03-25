@@ -16,6 +16,7 @@ var rcon = require('srcds-rcon')({
 var rcon_func = module.exports = {}
   /**
   * @method start
+  * @deprecated Could later make problems at start
   */
   rcon_func.start = function () {
     rcon.connect().then(() => {

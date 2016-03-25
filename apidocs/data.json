@@ -6,6 +6,13 @@
         "url": "https://github.com/MTRNord/nBot"
     },
     "files": {
+        "apidocs\\assets\\vendor\\bootstrap\\js\\bootstrap.min.js": {
+            "name": "apidocs\\assets\\vendor\\bootstrap\\js\\bootstrap.min.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
         "backend\\addServer.js": {
             "name": "backend\\addServer.js",
             "modules": {
@@ -188,6 +195,12 @@
     "elements": {},
     "classitems": [
         {
+            "file": "apidocs\\assets\\vendor\\bootstrap\\js\\bootstrap.min.js",
+            "line": 1,
+            "description": "Bootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
+            "class": "addServer"
+        },
+        {
             "file": "backend\\addServer.js",
             "line": 17,
             "itemtype": "method",
@@ -211,13 +224,15 @@
             "line": 17,
             "itemtype": "method",
             "name": "start",
+            "deprecated": true,
+            "deprecationMessage": "Could later make problems at start",
             "class": "rcon_func",
             "module": "nBot",
             "submodule": "rcon"
         },
         {
             "file": "backend\\rcon.js",
-            "line": 36,
+            "line": 37,
             "itemtype": "method",
             "name": "restart_game",
             "class": "rcon_func",
@@ -226,7 +241,7 @@
         },
         {
             "file": "backend\\rcon.js",
-            "line": 51,
+            "line": 52,
             "itemtype": "method",
             "name": "status",
             "return": {
@@ -239,7 +254,7 @@
         },
         {
             "file": "backend\\rcon.js",
-            "line": 65,
+            "line": 66,
             "itemtype": "method",
             "name": "live_on",
             "class": "rcon_func",
@@ -265,5 +280,10 @@
             "submodule": "server"
         }
     ],
-    "warnings": []
+    "warnings": [
+        {
+            "message": "Missing item type\nBootstrap.js by @fat & @mdo\nplugins: bootstrap-transition.js, bootstrap-modal.js, bootstrap-dropdown.js, bootstrap-scrollspy.js, bootstrap-tab.js, bootstrap-tooltip.js, bootstrap-popover.js, bootstrap-affix.js, bootstrap-alert.js, bootstrap-button.js, bootstrap-collapse.js, bootstrap-carousel.js, bootstrap-typeahead.js\nCopyright 2012 Twitter, Inc.\nhttp://www.apache.org/licenses/LICENSE-2.0.txt",
+            "line": " apidocs\\assets\\vendor\\bootstrap\\js\\bootstrap.min.js:1"
+        }
+    ]
 }

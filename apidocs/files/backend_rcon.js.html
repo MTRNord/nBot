@@ -117,8 +117,9 @@ var rcon = require(&#x27;srcds-rcon&#x27;)({
 var rcon_func = module.exports = {}
   /**
   * @method start
+  * @deprecated Could later make problems at start
   */
-  rcon_func.start: function () {
+  rcon_func.start = function () {
     rcon.connect().then(() =&gt; {
         return rcon.command(&#x27;changelevel de_dust2&#x27;).then(() =&gt; {
             console.log(&#x27;changed map&#x27;);
@@ -137,7 +138,7 @@ var rcon_func = module.exports = {}
   /**
   * @method restart_game
   */
-  rcon_func.restart_game: function () {
+  rcon_func.restart_game = function () {
     rcon.connect().then(() =&gt; {
         return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt;{
             console.log(&#x27;game restarted&#x27;);
@@ -153,7 +154,7 @@ var rcon_func = module.exports = {}
   * @method status
   * @return {String} Status from the Server.
   */
-  rcon_func.status: function () {
+  rcon_func.status = function () {
     return rcon.connect().then(() =&gt; {
         return rcon.command(&#x27;status&#x27;)
     }).then(
@@ -166,7 +167,7 @@ var rcon_func = module.exports = {}
   /**
   * @method live_on
   */
-  rcon_func.live_on: function () {
+  rcon_func.live_on = function () {
     rcon.connect().then(() =&gt; {
         return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; {
             console.log(&#x27;game restarted 0&#x27;);
