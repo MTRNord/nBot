@@ -17,7 +17,7 @@ var rcon_func = module.exports = {}
   /**
   * @method start
   */
-  rcon_func.start: function () {
+  rcon_func.start = function () {
     rcon.connect().then(() => {
         return rcon.command('changelevel de_dust2').then(() => {
             console.log('changed map');
@@ -36,7 +36,7 @@ var rcon_func = module.exports = {}
   /**
   * @method restart_game
   */
-  rcon_func.restart_game: function () {
+  rcon_func.restart_game = function () {
     rcon.connect().then(() => {
         return rcon.command('mp_restartgame 1').then(() =>{
             console.log('game restarted');
@@ -52,7 +52,7 @@ var rcon_func = module.exports = {}
   * @method status
   * @return {String} Status from the Server.
   */
-  rcon_func.status: function () {
+  rcon_func.status = function () {
     return rcon.connect().then(() => {
         return rcon.command('status')
     }).then(
@@ -65,7 +65,7 @@ var rcon_func = module.exports = {}
   /**
   * @method live_on
   */
-  rcon_func.live_on: function () {
+  rcon_func.live_on = function () {
     rcon.connect().then(() => {
         return rcon.command('mp_restartgame 1').then(() => {
             console.log('game restarted 0');

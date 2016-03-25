@@ -18,7 +18,7 @@ var addServer = module.exports = {}
   * @method start
   * @beta Work in Progress
   */
-  addServer.start: function () {
+  addServer.start = function () {
     var req = https.request({
       host: 'raw.githubusercontent.com',
       port: 443,
@@ -60,6 +60,6 @@ var addServer = module.exports = {}
   /**
   * @method step2
   */
-  addServer.step2: function () {
+  addServer.step2 = function () {
     //TODO Start Script
   }

@@ -20,7 +20,7 @@ var server =  module.exports = {};
   /**
   * @method start
   */
-  server.start: function () {
+  server.start = function () {
     app.get('/', function(req, res){
       res.sendFile(__dirname + '/theme/index.html');
     });
@@ -37,7 +37,7 @@ var server =  module.exports = {};
   /**
   * @method iojs
   */
-  server.iojs: function () {
+  server.iojs = function () {
     io.on('connection', function (socket) {
       //senden an socket dass er verbunden ist
       //socket.emit('userOnline', {message: 'verbunden'});
