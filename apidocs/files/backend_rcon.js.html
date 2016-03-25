@@ -26,7 +26,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/addServer", "classes/rcon_func", "classes/server", "modules/addServer", "modules/nBot", "modules/rcon", "modules/server"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/addServer", "classes/rcon", "classes/server", "modules/addServer", "modules/nBot", "modules/rcon", "modules/server"]'>
         </form>
     </div>
 </div>
@@ -49,7 +49,7 @@
 	                <div class="tab-pane active" id="classes">
 	                    <ul id="api-classes" class="nav nav-list">
 	                            <li><a href="../classes/addServer.html">addServer</a></li>
-	                            <li><a href="../classes/rcon_func.html">rcon_func</a></li>
+	                            <li><a href="../classes/rcon.html">rcon</a></li>
 	                            <li><a href="../classes/server.html">server</a></li>
 	                    </ul>
 	                </div>
@@ -106,30 +106,30 @@
 * @submodule rcon
 * @requires srcds-rcon
 */
-var rcon = require(&#x27;srcds-rcon&#x27;)({
+var rcon_lib = require(&#x27;srcds-rcon&#x27;)({
     address: &#x27;127.0.0.1&#x27;,
     password: &#x27;1199&#x27;
 });
 /**
-* @class rcon_func
+* @class rcon
 * @static
 */
-var rcon_func = module.exports = {}
+var rcon = module.exports = {}
   /**
   * @method start
   * @deprecated Could later make problems at start
   */
-  rcon_func.start = function () {
-    rcon.connect().then(() =&gt; {
-        return rcon.command(&#x27;changelevel de_dust2&#x27;).then(() =&gt; {
+  rcon.start = function () {
+    rcon_lib.connect().then(() =&gt; {
+        return rcon_lib.command(&#x27;changelevel de_dust2&#x27;).then(() =&gt; {
             console.log(&#x27;changed map&#x27;);
         });
     }).then(
-        () =&gt; rcon.command(&#x27;sv_lan 0&#x27;).then(() =&gt; console.log(&#x27;changed sv_lan&#x27;))
+        () =&gt; rcon_lib.command(&#x27;sv_lan 0&#x27;).then(() =&gt; console.log(&#x27;changed sv_lan&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;restarted game&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;restarted game&#x27;))
     ).then(
-        () =&gt; rcon.disconnect()
+        () =&gt; rcon_lib.disconnect()
     ).catch(err =&gt; {
         console.log(&#x27;caught&#x27;, err);
         console.log(err.stack);
@@ -138,13 +138,13 @@ var rcon_func = module.exports = {}
   /**
   * @method restart_game
   */
-  rcon_func.restart_game = function () {
-    rcon.connect().then(() =&gt; {
-        return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt;{
+  rcon.restart_game = function () {
+    rcon_lib.connect().then(() =&gt; {
+        return rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt;{
             console.log(&#x27;game restarted&#x27;);
         });
     }).then(
-        () =&gt; rcon.disconnect()
+        () =&gt; rcon_lib.disconnect()
     ).catch(err =&gt; {
         console.log(&#x27;caught&#x27;, err);
         console.log(err.stack);
@@ -154,11 +154,11 @@ var rcon_func = module.exports = {}
   * @method status
   * @return {String} Status from the Server.
   */
-  rcon_func.status = function () {
-    return rcon.connect().then(() =&gt; {
-        return rcon.command(&#x27;status&#x27;)
+  rcon.status = function () {
+    return rcon_lib.connect().then(() =&gt; {
+        return rcon_lib.command(&#x27;status&#x27;)
     }).then(
-        () =&gt; rcon.disconnect()
+        () =&gt; rcon_lib.disconnect()
     ).catch(err =&gt; {
         console.log(&#x27;caught&#x27;, err);
         console.log(err.stack);
@@ -167,39 +167,39 @@ var rcon_func = module.exports = {}
   /**
   * @method live_on
   */
-  rcon_func.live_on = function () {
-    rcon.connect().then(() =&gt; {
-        return rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; {
+  rcon.live_on = function () {
+    rcon_lib.connect().then(() =&gt; {
+        return rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; {
             console.log(&#x27;game restarted 0&#x27;);
         });
     }).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 1&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 1&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 2&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 2&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 3&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 3&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 4&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 4&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 5&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 5&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 6&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 6&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 7&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 7&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 8&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 8&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 9&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 9&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 10&#x27;))
+        () =&gt; rcon_lib.command(&#x27;mp_restartgame 1&#x27;).then(() =&gt; console.log(&#x27;game restarted 10&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+        () =&gt; rcon_lib.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+        () =&gt; rcon_lib.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
     ).then(
-        () =&gt; rcon.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
+        () =&gt; rcon_lib.command(&#x27;say LIVE!!!&#x27;).then(() =&gt; console.log(&#x27;LIVE!!!&#x27;))
     ).then(
-        () =&gt; rcon.disconnect()
+        () =&gt; rcon_lib.disconnect()
     ).catch(err =&gt; {
         console.log(&#x27;caught&#x27;, err);
         console.log(err.stack);

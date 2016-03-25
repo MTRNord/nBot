@@ -30,7 +30,7 @@
                 "rcon": 1
             },
             "classes": {
-                "rcon_func": 1
+                "rcon": 1
             },
             "fors": {},
             "namespaces": {}
@@ -67,7 +67,7 @@
             "elements": {},
             "classes": {
                 "addServer": 1,
-                "rcon_func": 1,
+                "rcon": 1,
                 "server": 1
             },
             "fors": {},
@@ -105,7 +105,7 @@
             "submodules": {},
             "elements": {},
             "classes": {
-                "rcon_func": 1
+                "rcon": 1
             },
             "fors": {},
             "is_submodule": 1,
@@ -161,9 +161,9 @@
             "line": 12,
             "static": 1
         },
-        "rcon_func": {
-            "name": "rcon_func",
-            "shortname": "rcon_func",
+        "rcon": {
+            "name": "rcon",
+            "shortname": "rcon",
             "classitems": [],
             "plugins": [],
             "extensions": [],
@@ -226,7 +226,7 @@
             "name": "start",
             "deprecated": true,
             "deprecationMessage": "Could later make problems at start",
-            "class": "rcon_func",
+            "class": "rcon",
             "module": "nBot",
             "submodule": "rcon"
         },
@@ -235,7 +235,7 @@
             "line": 37,
             "itemtype": "method",
             "name": "restart_game",
-            "class": "rcon_func",
+            "class": "rcon",
             "module": "nBot",
             "submodule": "rcon"
         },
@@ -248,7 +248,7 @@
                 "description": "Status from the Server.",
                 "type": "String"
             },
-            "class": "rcon_func",
+            "class": "rcon",
             "module": "nBot",
             "submodule": "rcon"
         },
@@ -257,7 +257,7 @@
             "line": 66,
             "itemtype": "method",
             "name": "live_on",
-            "class": "rcon_func",
+            "class": "rcon",
             "module": "nBot",
             "submodule": "rcon"
         },

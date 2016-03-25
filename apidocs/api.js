@@ -2,7 +2,7 @@ YUI.add("yuidoc-meta", function(Y) {
    Y.YUIDoc = { meta: {
     "classes": [
         "addServer",
-        "rcon_func",
+        "rcon",
         "server"
     ],
     "modules": [
