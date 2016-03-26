@@ -3,6 +3,7 @@
 *
 * @module nBot
 * @main nBot
+* @class nBot
 * @requires server, rcon
 */
 var web = require("./web/server.js")

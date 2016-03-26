@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>backend\addServer.js - nBot</title>
+    <title>nBot - nBot</title>
     <link rel="stylesheet" href="">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -95,78 +95,46 @@
                 <div id="docs-main">
                     <div class="content">
 <div class="page-header">
-    <h1>backend\addServer.js <small>File</small></h1>
+    <h1>nBot <small>Class</small></h1>
 </div>
 
-<div class="file">
-    <pre class="prettyprint linenums">
-/**
-* Build and setup csgoserver
-*
-* @module nBot
-* @submodule addServer
-* @requires server, progress, https, fs
-*/
-var socket = require(&quot;../web/server.js&quot;)
-var ProgressBar = require(&#x27;progress&#x27;);
-var https = require(&#x27;https&#x27;);
-var fs = require(&#x27;fs&#x27;);
-/**
-* @class addServer
-* @static
-*/
-var addServer = module.exports = {}
-  /**
-  * @method start
-  * @beta Work in Progress
-  */
-  addServer.start = function () {
-    var req = https.request({
-      host: &#x27;raw.githubusercontent.com&#x27;,
-      port: 443,
-      path: &#x27;/dgibbs64/linuxgameservers/master/CounterStrikeGlobalOffensive/csgoserver&#x27;
-    });
+<div class="well well-small">
 
-    req.on(&#x27;response&#x27;, function(res){
-      var len = parseInt(res.headers[&#x27;content-length&#x27;], 10);
 
-      console.log();
-      var bar = new ProgressBar(&#x27;  downloading [:bar] :percent :etas&#x27;, {
-        complete: &#x27;=&#x27;,
-        incomplete: &#x27; &#x27;,
-        width: 20,
-        total: len
-      });
+        <div class="foundat">
+            Defined in: <a href="../files/start.js.html#l1"><code>start.js:1</code></a>
+        </div>
 
-      res.on(&#x27;data&#x27;, function (chunk) {
-        bar.tick(chunk.length);
-        fs.writeFile(&quot;csgo_servers/csgoserver&quot;, chunk, function(err) {
-          if(err) {
-            return console.log(err);
-          }
+            Module: <a href="../modules/nBot.html">nBot</a>
 
-          console.log(&quot;The file was saved!&quot;);
-        });
-      });
+</div>
 
-      res.on(&#x27;end&#x27;, function () {
-        console.log(&#x27;\n&#x27;);
-      });
-      console.log(&#x27;statusCode: &#x27;, res.statusCode);
-    });
-    req.end();
-    req.on(&#x27;error&#x27;, (e) =&gt; {
-      console.error(e);
-    });
-  },
-  /**
-  * @method step2
-  */
-  addServer.step2 = function () {
-    //TODO Start Script
-  }
 
-    </pre>
+<div class="well well-small">
+    <p>A clone of the eBot by deStrO fully based on node.js with build in Web Page</p>
+
+</div>
+
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#index">Index</a></li>
+
+    </ul>
+
+    <div class="tab-content">
+        <div id="index" class="tab-pane active">
+            <h2 class="off-left">Item Index</h2>
+
+
+
+
+        </div>
+
+
+
+
+    </div>
 </div>
                     </div>
                 </div>

@@ -51,7 +51,9 @@
             "modules": {
                 "nBot": 1
             },
-            "classes": {},
+            "classes": {
+                "nBot": 1
+            },
             "fors": {},
             "namespaces": {}
         }
@@ -68,13 +70,14 @@
             "classes": {
                 "addServer": 1,
                 "rcon": 1,
-                "server": 1
+                "server": 1,
+                "nBot": 1
             },
             "fors": {},
             "namespaces": {},
             "tag": "main",
-            "file": "web\\server.js",
-            "line": 15,
+            "file": "start.js",
+            "line": 1,
             "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
             "itemtype": "main"
         },
@@ -190,6 +193,24 @@
             "file": "web\\server.js",
             "line": 15,
             "static": 1
+        },
+        "nBot": {
+            "name": "nBot",
+            "shortname": "nBot",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "nBot",
+            "namespace": "",
+            "file": "start.js",
+            "line": 1,
+            "description": "A clone of the eBot by deStrO fully based on node.js with build in Web Page",
+            "mainName": "nBot",
+            "tag": "main",
+            "itemtype": "main",
+            "_main": true
         }
     },
     "elements": {},
