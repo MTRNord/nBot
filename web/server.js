@@ -30,7 +30,7 @@ var server =  module.exports = {};
     app.use('/css', express.static(__dirname + '/theme/css'));
     app.use('/js', express.static(__dirname + '/theme/js'));
     app.use('/fonts', express.static(__dirname + '/theme/fonts'));
-    http..listen((process.env.PORT || 5000), "0.0.0.0", function(){
+    http.listen((process.env.PORT || 5000), "0.0.0.0", function(){
       console.log('listening on *:3001');
     });
   },
