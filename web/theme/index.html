@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="MTRNord">
     <link rel="icon" href="favicon.ico">
 
     <title>nBot</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-tour.min.css" rel="stylesheet">
     <!-- Bootstrap theme -->
     <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet">-->
     <!-- Custom styles for this template -->
@@ -96,11 +97,11 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title">Server 1</h3>
+                <h3 class="panel-title" id="server_1">Server 1</h3>
               </div>
               <div class="panel-body">
                 <div class="panel panel-default">
-                  <div class="panel-heading">Server Data</div>
+                  <div class="panel-heading" id="server-data_1">Server Data</div>
                   <div class="panel-body">
                     <p><b>Hostname: </b>Placeholder</p>
                     <p><b>IP: </b>Placeholder</p>
@@ -158,64 +159,12 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
-    <script>
-      PNotify.prototype.options.styling = "bootstrap3";
-      $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-      });
-      var ws = location.protocol+'//'+location.hostname+(location.port ? ':'+location.port: '');
-      var socket = io(ws);
-      $(document).off('click', '#restart').on('click', '#restart', function (e) {
-        console.log('restart fired');
-
-        socket.emit('command', {command: 'restartgame'});
-        e.preventDefault();
-      });
-      $(document).off('click', '#live_on').on('click', '#live_on', function (e) {
-        console.warn('LIVE!!!');
-
-        socket.emit('command', {command: 'live_on'});
-        e.preventDefault();
-      });
-      socket.on('alert', function (message) {
-        if (message.command == "live_on") {
-          PNotify.desktop.permission();
-          (new PNotify({
-            title: 'LIVE!!!',
-            text: "The game successfully started!",
-            type: 'success',
-            desktop: {
-              desktop: true
-            }
-          })).get().click(function(e) {
-            if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) return;
-            alert('Hey! You clicked the desktop notification!');
-          });
-        }else {
-
-        }
-      });
-      socket.on('status_alert', function (message) {
-        console.warn(typeof message)
-        console.warn(message)
-      });
-      $(document).off('click', '#check_status').on('click', '#check_status', function (e) {
-        console.log('Check Status');
-
-        socket.emit('command', {command: 'status'});
-        e.preventDefault();
-      });
-      $(document).off('click', '#add_server').on('click', '#add_server', function (e) {
-        console.log('Add Server');
-
-        socket.emit('command', {command: 'add_server'});
-        e.preventDefault();
-      });
-    </script>
+    <script type="text/javascript" src="js/bootstrap-tour.min.js"></script>
+    <script type="text/javascript" src="js/serverConnect.js"></script>
+    <script type="text/javascript" src="js/tour.js"></script>
   </body>
 </html>
