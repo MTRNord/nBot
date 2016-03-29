@@ -34,6 +34,9 @@ function drawRow(rowData) {
     var row = $("<tr />")
     $("#SourcemodVersions").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
     row.append($("<td>" + rowData.name + "</td>"));
+    console.error(rowData.name);
     row.append($("<td>" + rowData.zipball_url + "</td>"));
+    console.error(rowData.zipball_url);
     row.append($("<td>" + rowData.commit + "</td>"));
+    console.error(rowData.commit);
 }
