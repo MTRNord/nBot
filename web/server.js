@@ -63,7 +63,8 @@ var server =  module.exports = {};
                 addserver.start()
               }else {
                 if (command.command == "refreshSourcemod") {
-                  socket.emit('SourcemodList', {response: pluginManager.getSourcemodVersions(), command: command.command});
+                  console.log(pluginManager.getSourcemodVersions())
+                  socket.emit('SourcemodList', {response: pluginManager.getSourcemodVersions(), command: command.command})
                 }else {
                   console.log("unknown command");
                 }

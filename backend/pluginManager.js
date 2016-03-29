@@ -35,8 +35,6 @@ var pluginManager = module.exports = {}
         user: "alliedmodders",
         repo: "sourcemod"
     }, function(err, res) {
-      console.warn(res)
-      console.error(err)
       return res
     });
   }
