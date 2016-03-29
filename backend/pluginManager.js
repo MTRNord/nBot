@@ -30,6 +30,7 @@ var pluginManager = module.exports = {}
   * @beta Work in Progress
   */
   pluginManager.getSourcemodVersions = function () {
+    console.error("[DEBUG]")
     github.repos.getTags({
         // optional:
         // headers: {
