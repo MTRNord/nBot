@@ -34,6 +34,6 @@ pluginManager.getSourcemodVersions = function () {
     user: "alliedmodders",
     repo: "sourcemod"
   }, function(err, res) {
-    //return res
+    return res
   })
 }
