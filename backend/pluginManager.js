@@ -37,5 +37,5 @@ pluginManager.getSourcemodVersions = function () {
   }, function(err, res) {
     return res
   })
-  return tags
+  return "TEST"
 }
