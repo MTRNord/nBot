@@ -111,11 +111,15 @@
                     <button type="button" class="btn btn-info pull-right" id="refreshSourcemodReleases"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh</button>
                     <br/>
                     <table class="table table-hover" id="SourcemodVersions">
-                      <tr>
-                        <th>Id</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                      </tr>
+                      <thead>
+                        <tr>
+                          <th>Version</th>
+                          <th>Zip URL</th>
+                          <th>Commit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="SourcemodVersions_body">
+                      </tbody>
                     </table>
                   </div>
                 </div>
