@@ -39,5 +39,6 @@ var pluginManager = module.exports = {}
         repo: "sourcemod"
     }, function(err, res) {
         return res
+        console.log(res);
     });
   }
