@@ -31,7 +31,7 @@ var pluginManager = module.exports = {}
   */
   pluginManager.getSourcemodVersions = function () {
     console.error("[DEBUG]")
-    github.repos.getTags({
+    return github.repos.getTags({
         user: "alliedmodders",
         repo: "sourcemod"
     }, function(err, res) {
