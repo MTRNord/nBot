@@ -9,7 +9,7 @@
     <meta name="author" content="MTRNord">
     <link rel="icon" href="favicon.ico">
 
-    <title>nBot</title>
+    <title>nBot | PluginManager</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-tour.min.css" rel="stylesheet">
@@ -61,10 +61,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="index.html">Dashboard</a>
                 </li>
                 <li>
-                    <a href="pluginManager.html">PluginManager</a>
+                    <a href="#">PluginManager</a>
                 </li>
                 <li>
                     <a href="#">Overview</a>
@@ -96,31 +96,28 @@
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title" id="server_1">Server 1</h3>
+                <h3 class="panel-title" id="install_sourcemod_1">Install Sourcemod</h3>
               </div>
               <div class="panel-body">
                 <div class="panel panel-default">
-                  <div class="panel-heading" id="server-data_1">Server Data</div>
+                  <div class="panel-heading" id="install_sourcemod-data_1">Infos</div>
                   <div class="panel-body">
-                    <p><b>Hostname: </b>Placeholder</p>
-                    <p><b>IP: </b>Placeholder</p>
-                    <p><b>Password: </b>Placeholder</p>
-                    <p><b>Owner: </b>Placeholder</p>
+                    <p><b>Placeholder</b></p>
                   </div>
                 </div>
                 <div class="panel panel-default">
-                  <div class="panel-heading">Game Options</div>
+                  <div class="panel-heading">Versions</div>
                   <div class="panel-body">
-                    <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
-                    <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
+                    <button type="button" class="btn btn-danger btn-lg" id="refreshSourcemodReleases"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>Refresh</button>
+                    <table class="table table-hover" id="SourcemodVersions">
+                      <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                      </tr>
+                    </table>
                   </div>
                 </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">Game Infos</div>
-                  <div class="panel-body">
-                    <p id="status"></p>
-                    <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -163,7 +160,7 @@
     <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-tour.min.js"></script>
-    <script type="text/javascript" src="js/serverConnect.js"></script>
+    <script type="text/javascript" src="js/pluginManagerConnect.js"></script>
     <script type="text/javascript" src="js/tour.js"></script>
   </body>
 </html>

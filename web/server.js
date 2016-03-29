@@ -3,7 +3,7 @@
 *
 * @module nBot
 * @submodule server
-* @requires app, express, http, io, rcon, addserver, util
+* @requires app, express, http, io, rcon, addserver, util, pluginManager
 */
 var app = require('express')();
 var express = require('express')
@@ -11,6 +11,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var rcon = require("../backend/rcon.js")
 var addserver = require("../backend/addServer.js")
+var pluginManager = require("../backend/pluginManager.js")
 var util = require('util');
 /**
 * @class server
@@ -58,7 +59,11 @@ var server =  module.exports = {};
               if (command.command == "add_server") {
                 addserver.start()
               }else {
-                console.log("unknown command");
+                if (command.command == "refreshSourcemod") {
+                  socket.emit('SourcemodList', {response: pluginManager.getSourcemodVersions(), command: command.command});
+                }else {
+                  console.log("unknown command");
+                }
               }
             }
           }
