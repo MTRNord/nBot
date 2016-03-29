@@ -25,8 +25,11 @@ var server =  module.exports = {};
     app.get('/', function(req, res){
       res.sendFile(__dirname + '/theme/index.html');
     });
-    app.get('/theme.css', function(req, res){
-      res.sendFile(__dirname + '/theme/theme.css');
+    app.get('/index', function(req, res){
+      res.sendFile(__dirname + '/theme/index.html');
+    });
+    app.get('/pluginManager', function(req, res){
+      res.sendFile(__dirname + '/theme/pluginManager.html');
     });
     app.use('/css', express.static(__dirname + '/theme/css'));
     app.use('/js', express.static(__dirname + '/theme/js'));
