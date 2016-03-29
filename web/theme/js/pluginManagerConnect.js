@@ -20,15 +20,20 @@ socket.on('SourcemodList', function (message) {
   drawTable(message.response);
 });
 function drawTable(data) {
-    for (var i = 0; i < data.length; i++) {
-        drawRow(data[i]);
+  for (var key in data) {
+    if (data.hasOwnProperty(key)) {
+      var data1 = data[key];
+      for (var i = 0; i < data1.length; i++) {
+          drawRow(data1[i]);
+      }
     }
+  }
 }
 
 function drawRow(rowData) {
     var row = $("<tr />")
-    $("#personDataTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
-    row.append($("<td>" + rowData.id + "</td>"));
-    row.append($("<td>" + rowData.firstName + "</td>"));
-    row.append($("<td>" + rowData.lastName + "</td>"));
+    $("#SourcemodVersions").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+    row.append($("<td>" + rowData.name + "</td>"));
+    row.append($("<td>" + rowData.zipball_url + "</td>"));
+    row.append($("<td>" + rowData.commit + "</td>"));
 }
