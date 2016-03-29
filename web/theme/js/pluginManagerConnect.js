@@ -16,7 +16,7 @@ socket.on('status_alert', function (message) {
 });
 
 socket.on('SourcemodList', function (message) {
-  console.err(message)
+  console.error(message)
   drawTable(message.response);
 });
 function drawTable(data) {
