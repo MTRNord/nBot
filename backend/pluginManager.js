@@ -30,11 +30,10 @@ var pluginManager = module.exports = {}
   * @beta Work in Progress
   */
 pluginManager.getSourcemodVersions = function () {
-  console.log(github.repos.getTags({
+  github.repos.getTags({
     user: "alliedmodders",
     repo: "sourcemod"
   }, function(err, res) {
-    return res
-  }))
-
+    //return res
+  })
 }
