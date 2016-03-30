@@ -28,7 +28,7 @@ var github = new GitHubApi({
 * @method getSourcemodVersions
 * @beta Work in Progress
 */
-exports.pluginManager.getSourcemodVersions = function () {
+exports.getSourcemodVersions = function () {
   return github.repos.getTags({
     user: "alliedmodders",
     repo: "sourcemod"
