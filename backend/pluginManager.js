@@ -24,12 +24,11 @@ var github = new GitHubApi({
 * @class pluginManager
 * @static
 */
-var pluginManager = exports = {}
-  /**
-  * @method getSourcemodVersions
-  * @beta Work in Progress
-  */
-pluginManager.getSourcemodVersions = function () {
+/**
+* @method getSourcemodVersions
+* @beta Work in Progress
+*/
+exports.pluginManager.getSourcemodVersions = function () {
   return github.repos.getTags({
     user: "alliedmodders",
     repo: "sourcemod"
