@@ -11,7 +11,7 @@ var github = new GitHubApi({
     // required
     version: "3.0.0",
     // optional
-    debug: false,
+    debug: true,
     protocol: "https",
     host: "api.github.com", // should be api.github.com for GitHub
     pathPrefix: "", // for some GHEs; none for GitHub
@@ -34,5 +34,9 @@ exports.getSourcemodVersions = function () {
     repo: "sourcemod"
   }, function(err, res) {
     return res
+    console.log("test");
+    console.log(JSON.stringify(res));
+    console.log("test2");
+    console.log(err)
   })
 }
