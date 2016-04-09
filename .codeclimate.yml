@@ -27,3 +27,16 @@ ratings:
 exclude_paths:
 - config/
 - test/
+- "web/theme/js/bootstrap-tour.js"
+- "web/theme/js/bootstrap-tour.min.js"
+- "web/theme/js/bootstrap.js"
+- "web/theme/js/bootstrap.min.js"
+- "web/theme/js/pnotify.custom.min.js"
+- "web/theme/fonts/*"
+- "web/theme/css/bootstrap-theme.css"
+- "web/theme/css/bootstrap-theme.min.css"
+- "web/theme/css/bootstrap-tour.css"
+- "web/theme/css/bootstrap-tour.min.css"
+- "web/theme/css/bootstrap.css"
+- "web/theme/css/bootstrap.min.css"
+- "web/theme/css/pnotify.custom.min.css"
