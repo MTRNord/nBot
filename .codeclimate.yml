@@ -40,3 +40,4 @@ exclude_paths:
 - "web/theme/css/bootstrap.css"
 - "web/theme/css/bootstrap.min.css"
 - "web/theme/css/pnotify.custom.min.css"
+- "apidocs/**"
