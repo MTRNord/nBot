@@ -33,10 +33,10 @@ exports.getSourcemodVersions = function () {
     user: "alliedmodders",
     repo: "sourcemod"
   }, function(err, res) {
-    return res
     console.log("test");
     console.log(JSON.stringify(res));
     console.log("test2");
     console.log(err)
+    return res
   })
 }
