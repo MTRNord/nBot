@@ -23,17 +23,17 @@ var server =  module.exports = {};
   */
   server.start = function () {
     app.get('/', function(req, res){
-      res.sendFile(__dirname + '/theme/index.html');
+      res.sendFile(path.join(__dirname, '/theme/index.html'));
     });
     app.get('/index', function(req, res){
-      res.sendFile(__dirname + '/theme/index.html');
+      res.sendFile(path.join(__dirname, '/theme/index.html'));
     });
     app.get('/pluginManager', function(req, res){
-      res.sendFile(__dirname + '/theme/pluginManager.html');
+      res.sendFile(path.join(__dirname, '/theme/pluginManager.html'));
     });
-    app.use('/css', express.static(__dirname + '/theme/css'));
-    app.use('/js', express.static(__dirname + '/theme/js'));
-    app.use('/fonts', express.static(__dirname + '/theme/fonts'));
+    app.use('/css', express.static(path.join(__dirname, '/theme/css')));
+    app.use('/js', express.static(path.join(__dirname, '/theme/js')));
+    app.use('/fonts', express.static(path.join(__dirname, '/theme/fonts')));
     http.listen((process.env.PORT || 5000), "0.0.0.0", function(){
       console.log('listening on *:3001');
     });
@@ -49,20 +49,20 @@ var server =  module.exports = {};
       //Informationen vom User holen
       socket.on('command', function (command) {
         console.log(command.command);
-        if (command.command == "restartgame") {
+        if (command.command === "restartgame") {
           rcon.restart_game()
         }else {
-          if (command.command == "live_on") {
+          if (command.command === "live_on") {
             rcon.live_on()
           }else {
-            if (command.command == "status") {
+            if (command.command === "status") {
               rcon.status().then(result => console.log('Got status', result))
               //socket.emit('status_alert', {response: result})
             }else {
-              if (command.command == "add_server") {
+              if (command.command === "add_server") {
                 addserver.start()
               }else {
-                if (command.command == "refreshSourcemod") {
+                if (command.command === "refreshSourcemod") {
                   console.log("here");
                   console.log(typeof pluginManager.getSourcemodVersions())
                   socket.emit('SourcemodList', {response: pluginManager.getSourcemodVersions(), command: command.command})

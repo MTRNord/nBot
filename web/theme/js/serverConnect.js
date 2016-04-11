@@ -18,7 +18,7 @@ $(document).off('click', '#live_on').on('click', '#live_on', function (e) {
   e.preventDefault();
 });
 socket.on('alert', function (message) {
-  if (message.command == "live_on") {
+  if (message.command === "live_on") {
     PNotify.desktop.permission();
     (new PNotify({
       title: 'LIVE!!!',
@@ -31,8 +31,6 @@ socket.on('alert', function (message) {
       if ($('.ui-pnotify-closer, .ui-pnotify-sticker, .ui-pnotify-closer *, .ui-pnotify-sticker *').is(e.target)) return;
       alert('Hey! You clicked the desktop notification!');
     });
-  }else {
-
   }
 });
 socket.on('status_alert', function (message) {
