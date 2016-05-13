@@ -32,7 +32,7 @@
     "github": "^0.2.4",
     "progress": "^1.1.8",
     "socket.io": "^1.4.5",
-    "srcds-rcon": "^2.2.0"
+    "srcds-rcon": "^2.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
