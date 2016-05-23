@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^2.4.5",
+    "mocha": "^2.5.1",
     "mocha-circleci-reporter": "0.0.1",
     "yuidoc-bootstrap-theme": "^1.0.6",
     "yuidocjs": "^0.10.1"
