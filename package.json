@@ -31,7 +31,7 @@
     "express": "^4.13.4",
     "github": "^0.2.4",
     "progress": "^1.1.8",
-    "socket.io": "^1.4.5",
+    "socket.io": "^1.4.6",
     "srcds-rcon": "^2.2.1"
   },
   "devDependencies": {
