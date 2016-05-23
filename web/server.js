@@ -13,6 +13,7 @@ var rcon = require("../backend/rcon.js")
 var addserver = require("../backend/addServer.js")
 var pluginManager = require("../backend/pluginManager.js")
 var util = require('util');
+var path = require('path');
 /**
 * @class server
 * @static
