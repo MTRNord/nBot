@@ -8,17 +8,16 @@
 var GitHubApi = require("github");
 
 var github = new GitHubApi({
-    // required
-    version: "3.0.0",
     // optional
-    debug: true,
+    debug: false,
     protocol: "https",
     host: "api.github.com", // should be api.github.com for GitHub
     pathPrefix: "", // for some GHEs; none for GitHub
-    timeout: 5000,
     headers: {
-        "user-agent": "nBot" // GitHub is happy with a unique user agent
-    }
+        "user-agent": "MTRNord" // GitHub is happy with a unique user agent
+    },
+    followRedirects: false, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
+    timeout: 5000
 });
 /**
 * @class pluginManager
@@ -28,15 +27,18 @@ var github = new GitHubApi({
 * @method getSourcemodVersions
 * @beta Work in Progress
 */
-exports.getSourcemodVersions = function () {
+var pluginManager = module.exports = {}
+pluginManager.getSourcemodVersions = function (socket, command) {
   github.repos.getTags({
     user: "alliedmodders",
     repo: "sourcemod"
   }, function(err, res) {
-    console.log("test");
-    console.log(JSON.stringify(res));
-    console.log("test2");
-    console.log(err)
-    return res
+    if (err) {
+      socket.emit('SourcemodList', {response: err, command: command.command})
+      console.error(err)
+    }else {
+      socket.emit('SourcemodList', {response: res, command: command.command})
+      //console.log(JSON.stringify(res))
+    }
   })
 }

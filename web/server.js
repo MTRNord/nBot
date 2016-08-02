@@ -35,8 +35,8 @@ var server =  module.exports = {};
     app.use('/css', express.static(path.join(__dirname, '/theme/css')));
     app.use('/js', express.static(path.join(__dirname, '/theme/js')));
     app.use('/fonts', express.static(path.join(__dirname, '/theme/fonts')));
-    http.listen((process.env.PORT || 5000), "0.0.0.0", function(){
-      console.log('listening on *:3001');
+    http.listen((process.env.PORT || 8080), "0.0.0.0", function(){
+      console.log('listening on *:8080');
     });
   },
   /**
@@ -64,9 +64,7 @@ var server =  module.exports = {};
                 addserver.start()
               }else {
                 if (command.command === "refreshSourcemod") {
-                  console.log("here");
-                  console.log(typeof pluginManager.getSourcemodVersions())
-                  socket.emit('SourcemodList', {response: pluginManager.getSourcemodVersions(), command: command.command})
+                  pluginManager.getSourcemodVersions(socket, command)
                 }else {
                   console.log("unknown command");
                 }
