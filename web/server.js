@@ -26,11 +26,11 @@ var server =  module.exports = {};
     app.get('/', function(req, res){
       res.sendFile(path.join(__dirname, '/theme/index.html'));
     });
-    app.get('/index', function(req, res){
-      res.sendFile(path.join(__dirname, '/theme/index.html'));
-    });
     app.get('/pluginManager', function(req, res){
-      res.sendFile(path.join(__dirname, '/theme/pluginManager.html'));
+      res.sendFile(path.join(__dirname, '/theme/admin/pluginManager.html'));
+    });
+    app.get('/admin', function(req, res){
+      res.sendFile(path.join(__dirname, '/theme/admin/index.html'));
     });
     app.use('/css', express.static(path.join(__dirname, '/theme/css')));
     app.use('/js', express.static(path.join(__dirname, '/theme/js')));
@@ -60,8 +60,8 @@ var server =  module.exports = {};
               rcon.status().then(result => console.log('Got status', result))
               //socket.emit('status_alert', {response: result})
             }else {
-              if (command.command === "add_server") {
-                addserver.start()
+              if (command.command === "script_download") {
+                addserver.start(socket, command)
               }else {
                 if (command.command === "refreshSourcemod") {
                   pluginManager.getSourcemodVersions(socket, command)

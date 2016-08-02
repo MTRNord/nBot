@@ -43,9 +43,3 @@ $(document).off('click', '#check_status').on('click', '#check_status', function 
   socket.emit('command', {command: 'status'});
   e.preventDefault();
 });
-$(document).off('click', '#add_server').on('click', '#add_server', function (e) {
-  console.log('Add Server');
-
-  socket.emit('command', {command: 'add_server'});
-  e.preventDefault();
-});

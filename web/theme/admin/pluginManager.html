@@ -9,7 +9,7 @@
     <meta name="author" content="MTRNord">
     <link rel="icon" href="favicon.ico">
 
-    <title>nBot</title>
+    <title>nBot | PluginManager</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-tour.min.css" rel="stylesheet">
@@ -45,7 +45,7 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home</a></li>
+              <li><a href="/">Home</a></li>
               <li><a href="#about">About</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
@@ -60,10 +60,10 @@
                         Start Bootstrap
                     </a>
                 </li>
-                <li class="active">
+                <li>
                     <a href="/">Dashboard</a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="pluginManager">Plugin Manager</a>
                 </li>
                 <li>
@@ -91,36 +91,38 @@
             <button type="button" class="btn btn-default" aria-label="Toggle Menu" href="#menu-toggle"  id="menu-toggle">
               <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> MENU
             </button>
-            <h1>nBot</h1>
+            <h1>Admin | Plugin Manager</h1>
             <p>This is a eBot like CSGO Webadministration called nBot.</p>
 
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title" id="server_1">Server 1</h3>
+                <h3 class="panel-title" id="install_sourcemod_1">Install Sourcemod</h3>
               </div>
               <div class="panel-body">
                 <div class="panel panel-default">
-                  <div class="panel-heading" id="server-data_1">Server Data</div>
+                  <div class="panel-heading" id="install_sourcemod-data_1">Infos</div>
                   <div class="panel-body">
-                    <p><b>Hostname: </b>Placeholder</p>
-                    <p><b>IP: </b>Placeholder</p>
-                    <p><b>Password: </b>Placeholder</p>
-                    <p><b>Owner: </b>Placeholder</p>
+                    <p><b>Placeholder</b></p>
                   </div>
                 </div>
                 <div class="panel panel-default">
-                  <div class="panel-heading">Game Options</div>
+                  <div class="panel-heading">Versions</div>
                   <div class="panel-body">
-                    <button type="button" class="btn btn-danger btn-lg" id="restart">Restart Game</button>
-                    <button type="button" class="btn btn-success btn-lg" id="live_on">LIVE!!!</button>
+                    <button type="button" class="btn btn-info pull-right" id="refreshSourcemodReleases"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Refresh</button>
+                    <br/>
+                    <table class="table table-hover" id="SourcemodVersions">
+                      <thead>
+                        <tr>
+                          <th>Version</th>
+                          <th>Zip URL</th>
+                          <th>Commit</th>
+                        </tr>
+                      </thead>
+                      <tbody id="SourcemodVersions_body">
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-                <div class="panel panel-default">
-                  <div class="panel-heading">Game Infos</div>
-                  <div class="panel-body">
-                    <p id="status"></p>
-                    <button type="button" class="btn btn-info btn-lg" id="check_status">Check Status</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -162,7 +164,7 @@
     <script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     <script type="text/javascript" src="js/pnotify.custom.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-tour.min.js"></script>
-    <script type="text/javascript" src="js/serverConnect.js"></script>
+    <script type="text/javascript" src="js/pluginManagerConnect.js"></script>
     <script type="text/javascript" src="js/tour.js"></script>
   </body>
 </html>
