@@ -16,17 +16,18 @@ socket.on('status_alert', function (message) {
 });
 
 socket.on('SourcemodList', function (message) {
+  console.log(message.response);
   drawTable(message.response);
 });
 function drawTable(data) {
   for (var key in data) {
     if (data.hasOwnProperty(key)) {
-      for (var i = 0; i < data.length; i++) {
-        var name = data[key].name;
-        var check = name.indexOf("sourcemod") > -1;
-        if (check) {
-          drawRow(data[key]);
-        }
+      var name = data[key].name;
+      var check = name.indexOf("sourcemod") > -1;
+      if (check) {
+        drawRow(data[key]);
+      }else{
+        console.error(JSON.stringify(data[key]) + " <-- is not sourceMod");
       }
     }
   }
@@ -36,6 +37,6 @@ function drawRow(rowData) {
     var row = $("<tr />")
     $("#SourcemodVersions_body").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
     row.append($("<td>" + rowData.name + "</td>"));
-    row.append($("<td>" + rowData.zipball_url + "</td>"));
+    row.append($("<td><a href=\"" + rowData.zipball_url + "\" title=\"" + rowData.name + "\">" + rowData.zipball_url + "</td>"));
     row.append($("<td>" + rowData.commit.sha + "</td>"));
 }
