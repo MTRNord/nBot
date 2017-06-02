@@ -29,14 +29,14 @@
   "homepage": "https://github.com/MTRNord/nBot#readme",
   "dependencies": {
     "express": "^4.13.4",
-    "github": "^8.2.1",
-    "progress": "^1.1.8",
+    "github": "^9.2.0",
+    "progress": "^2.0.0",
     "rcon": "^1.0.2",
-    "socket.io": "^1.4.5",
+    "socket.io": "^2.0.2",
     "srcds-rcon": "^2.2.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.0.1",
     "mocha": "^3.0.0",
     "mocha-circleci-reporter": "0.0.2",
     "yuidoc-bootstrap-theme": "^1.0.6",
